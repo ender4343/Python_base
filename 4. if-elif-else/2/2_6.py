@@ -8,7 +8,7 @@
 #P.S. Число дней в месяцах не високосного года, начиная с января: 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
 
 m,d=map(int,input().split())
-f_func=lambda x:str(x).rjust(2,'0')+'.'
+f_func=lambda x:str(x).rjust(2,'0')
 dic={1:31, 2:28, 3:31, 4:30, 5:31, 6:30, 7:31, 8:31, 9:30, 10:31, 11:30, 12:31}
 if m==1 and d==1:
     prev_d='12.31'
@@ -18,12 +18,12 @@ elif m==12 and d==31:
     next_d='01.01'
 else:
     if dic.get(m)==d:
-        next_d=f_func(m+1)+'01'
-        prev_d=f_func(m)+f_func(d-1)
+        next_d=f_func(m+1)+'.01'
+        prev_d=f_func(m)+'.'+f_func(d-1)
     elif d==1:
-        next_d=f_func(m)+f_func(d+1)[:-1]
-        prev_d=f_func(m-1)+str(dic.get(m-1))
+        next_d=f_func(m)+'.'+f_func(d+1)
+        prev_d=f_func(m-1)+'.'+str(dic.get(m-1))
     else:
-        next_d=f_func(m)+f_func(d+1)[:-1]
-        prev_d=f_func(m)+f_func(d-1)[:-1]
+        next_d=f_func(m)+'.'+f_func(d+1)
+        prev_d=f_func(m)+'.'+f_func(d-1)
 print(prev_d,next_d)
